@@ -10,65 +10,26 @@ const Navbar = () => {
           <div className="relative flex items-center justify-between">
             <a
               href="/"
-              aria-label="Company"
-              title="Company"
+              aria-label="Grand Show"
+              title="Grand Show"
               className="inline-flex items-center"
             >
               <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                Company
+                Grand Show
               </span>
             </a>
-            <ul className="items-center hidden space-x-8 lg:flex">
-              <li>
-                <a
-                  href="/"
-                  aria-label="Our product"
-                  title="Our product"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  Product
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="Our product"
-                  title="Our product"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="Product pricing"
-                  title="Product pricing"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  aria-label="About us"
-                  title="About us"
-                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                >
-                  About us
-                </a>
-              </li>
-            </ul>
+
             <ul className=" items-center hidden space-x-8 lg:flex">
               <li>
                 <a
-                  href="/"
+                  href="https://www.themoviedb.org/"
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                  aria-label="Sign up"
-                  title="Sign up"
+                  aria-label="The Movie Database"
+                  title="The Movie Database"
                 >
-                  Sign up
+                  Powered by The Movie Database
                 </a>
               </li>
             </ul>
@@ -79,7 +40,7 @@ const Navbar = () => {
                 className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
                 onClick={() => setIsMenuOpen(true)}
               >
-                <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
+                <svg className="w-5 text-gray-100" viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
                     d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
@@ -101,12 +62,12 @@ const Navbar = () => {
                       <div>
                         <a
                           href="/"
-                          aria-label="Company"
-                          title="Company"
+                          aria-label="Grand Show"
+                          title="Grand Show"
                           className="inline-flex items-center"
                         >
                           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                            Company
+                            Grand Show
                           </span>
                         </a>
                       </div>
@@ -118,7 +79,7 @@ const Navbar = () => {
                           onClick={() => setIsMenuOpen(false)}
                         >
                           <svg
-                            className="w-5 text-gray-600"
+                            className="w-5 text-gray-900"
                             viewBox="0 0 24 24"
                           >
                             <path
@@ -133,52 +94,14 @@ const Navbar = () => {
                       <ul className="space-y-4">
                         <li>
                           <a
-                            href="/"
-                            aria-label="Our product"
-                            title="Our product"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            href="https://www.themoviedb.org/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                            aria-label="The Movie Database"
+                            title="The Movie Database"
                           >
-                            Product
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/"
-                            aria-label="Our product"
-                            title="Our product"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            Features
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/"
-                            aria-label="Product pricing"
-                            title="Product pricing"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            Pricing
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/"
-                            aria-label="About us"
-                            title="About us"
-                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          >
-                            About us
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="/"
-                            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                            aria-label="Sign up"
-                            title="Sign up"
-                          >
-                            Sign up
+                            Powered by The Movie Database
                           </a>
                         </li>
                       </ul>

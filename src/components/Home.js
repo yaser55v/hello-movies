@@ -19,7 +19,6 @@ const Home = () => {
       <div className="mx-auto w-full ">
         <div className="">
           <div className="">
-            {/*     <input type="text" className="w-full" placeholder="siiii" /> */}
             <Swiper
               slidesPerView={1}
               spaceBetween={1}
@@ -27,11 +26,11 @@ const Home = () => {
               pagination={{
                 clickable: true,
               }}
-              /*     autoplay={{
+              autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
-              }} */
+              }}
               navigation={true}
               speed={1200}
               parallax={true}

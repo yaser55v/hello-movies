@@ -11,25 +11,25 @@ function classNames(...classes) {
 
 const List = () => {
   let [categories] = useState({
-    "Popular Movies": [
+    Movies: [
       {
         id: 1,
         component: <Popular />,
       },
     ],
-    "Popular TV": [
+    TV: [
       {
         id: 1,
         component: <SeriaTV />,
       },
     ],
-    "Top Rated Movies": [
+    "Top Movies": [
       {
         id: 1,
         component: <TopMovies />,
       },
     ],
-    "Top Rated TV": [
+    "Top TV": [
       {
         id: 1,
         component: <TopTv />,
@@ -41,9 +41,11 @@ const List = () => {
     <div className="container mx-auto">
       <div className="w-full  px-2 py-16 sm:px-0">
         <Tab.Group>
-          <h4 className="text-blue-100">Categories</h4>
-          <Tab.List className="flex p-1 space-x-1 border rounded-full w-full lg:w-2/4">
-            <h5 className="text-white pl-8 pr-20 py-2.5 text-lg leading-5 font-bold">
+          <h4 className="text-blue-100 block md:hidden text-center mb-4">
+            Categories
+          </h4>
+          <Tab.List className="flex p-1 space-x-1 border rounded-full w-full">
+            <h5 className="text-white hidden md:block pl-8 pr-20 py-2.5 text-lg leading-5 font-bold">
               Categories
             </h5>
             {Object.keys(categories).map(category => (
@@ -51,7 +53,7 @@ const List = () => {
                 key={category}
                 className={({ selected }) =>
                   classNames(
-                    "w-full py-2.5 text-sm leading-5 font-semibold text-black rounded-full ",
+                    "w-full py-0 lg:py-2.5 text-xs lg:text-sm px-1 lg:font-semibold text-black rounded-full ",
                     "focus:outline-none focus:ring-green-300 ring-offset-2 ring-opacity-60 ring-green-300",
                     selected
                       ? "shadow-custom bg-gradient-to-r from-green-400 to-blue-500 border-green-200 border"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import ModalVideo from "react-modal-video"
 import { CircularProgressbar } from "react-circular-progressbar"
 import "../../node_modules/react-modal-video/css/modal-video.min.css"
@@ -14,7 +14,10 @@ import errImg from "../styles/avater.png"
 import errLogo from "../styles/errLogo.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Navigation } from "swiper/core"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
 SwiperCore.use([Navigation])
+
 const MoviePopularTemplate = ({ data }) => {
   const { tmdbId } = data.tmdbMoviePopular
   const [details, setDetails] = useState("")
@@ -25,7 +28,7 @@ const MoviePopularTemplate = ({ data }) => {
       try {
         const response = await fetch(url)
         const json = await response.json()
-        console.log(json.videos.results[0].key)
+
         console.log(json)
         setDetails(json)
       } catch (error) {
@@ -55,7 +58,8 @@ const MoviePopularTemplate = ({ data }) => {
   /*   const getCertification = results.slice(0, 1) */
   console.log(results)
   return (
-    <>
+    <Layout>
+      <Seo title={title} />
       <div className="relative animate-lazy">
         {backdrop_path && (
           <img
@@ -133,22 +137,22 @@ const MoviePopularTemplate = ({ data }) => {
                   </div>
                 </div>
 
-                <p className="max-w-xl my-8 text-base text-gray-300 md:text-lg">
+                <p className="max-w-xl my-8 text-base text-gray-300 md:text-lg ">
                   {overview}
                 </p>
                 <div className="flex justify-between items-center">
-                  {videos.results && videos.results[0].key !== undefined ? (
+                  {videos.results && videos.results !== undefined ? (
                     <React.Fragment>
                       <ModalVideo
                         channel="youtube"
                         autoplay
                         isOpen={isOpen}
-                        videoId={videos.results[0].key}
+                        videoId={videos.results[0]?.key}
                         onClose={() => setOpen(false)}
                       />
 
                       <button
-                        className=" flex items-center text-lg text-green-400 cursor-pointer"
+                        className=" flex items-center text-lg text-green-400 cursor-pointer transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                         onClick={() => setOpen(true)}
                       >
                         <svg
@@ -205,18 +209,19 @@ const MoviePopularTemplate = ({ data }) => {
                 navigation={true}
                 spaceBetween={80}
                 freeMode={true}
+                width={500}
                 breakpoints={{
                   640: {
-                    slidesPerView: 1,
-                    spaceBetween: 60,
+                    slidesPerView: 3,
+                    spaceBetween: 30,
                   },
                   768: {
-                    slidesPerView: 1,
-                    spaceBetween: 60,
+                    slidesPerView: 4,
+                    spaceBetween: 30,
                   },
                   1024: {
-                    slidesPerView: 8,
-                    spaceBetween: 20,
+                    slidesPerView: 4,
+                    spaceBetween: 30,
                   },
                 }}
                 className="mySwiper"
@@ -265,44 +270,61 @@ const MoviePopularTemplate = ({ data }) => {
         </div>
       </div>
       {/* Fetch Similar */}
-      <div className="animate-lazy">
+      <div className="animate-lazy bg-gray-100">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+          <h2 className="text-2xl pb-12 font-extrabold tracking-tight text-gray-900">
             Similar Results
           </h2>
-
-          <div className="mt-6 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {results.slice(0, 4).map(result => {
-              const { id, title, poster_path } = result
-              return (
-                <div key={id} className="group relative">
-                  <div className="w-full h-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
-                    <img
-                      src={poster_url + poster_path}
-                      alt={title}
-                      className="w-full h-full object-center object-cover lg:w-full lg:h-full animate-lazy"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
-                        <Link to={`/${id}`}>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                        </Link>
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-500">{title}</p>
+          <Swiper
+            slidesPerView={2}
+            navigation={true}
+            spaceBetween={20}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 60,
+              },
+            }}
+            className="mySwiper"
+          >
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+              {results.map(result => {
+                const { id, title, vote_average, poster_path } = result
+                return (
+                  <SwiperSlide key={id} className="">
+                    <div className="group relative ">
+                      <div className="w-full h-full shadow-xl bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none ">
+                        <img
+                          src={poster_url + poster_path}
+                          alt={title}
+                          className="w-full h-full object-center object-cover lg:w-full lg:h-full animate-lazy"
+                        />
+                      </div>
+                      <div className="mt-4 flex justify-between items-center">
+                        <h3 className="text-sm text-gray-800 text-center uppercase truncate">
+                          {title}
+                        </h3>
+                        <h3 className="text-sm text-gray-800 font-bold text-center">
+                          {vote_average}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+                  </SwiperSlide>
+                )
+              })}
+            </div>
+          </Swiper>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 export const query = graphql`

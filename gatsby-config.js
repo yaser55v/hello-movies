@@ -3,9 +3,15 @@ require("dotenv").config({
 })
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Grand Show`,
+    description: `Gatsby project with data from The Movie Database - https://www.themoviedb.org/`,
+    author: `Yasser Mahmoud`,
+    siteUrl: `https://www.themoviedb.org/`,
+  },
   plugins: [
     "gatsby-plugin-postcss",
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -17,15 +23,19 @@ module.exports = {
         endpoints: [
           {
             url: `movie/popular`,
+            countLimit: 20,
           },
           {
             url: `movie/top_rated`,
+            countLimit: 20,
           },
           {
             url: `tv/popular`,
+            countLimit: 20,
           },
           {
             url: `tv/top_rated`,
+            countLimit: 20,
           },
         ],
       },
