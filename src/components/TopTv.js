@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 const TopTv = () => {
   const data = useStaticQuery(query)
   const topTV = data.allTmdbTvTopRated.nodes
@@ -10,7 +10,6 @@ const TopTv = () => {
           {topTV.map(topv => {
             const {
               id,
-              tmdbId,
               name,
               vote_average,
               poster_path: { w780 },
@@ -27,10 +26,8 @@ const TopTv = () => {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <Link to={`/${tmdbId}`}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {name}
-                      </Link>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {name}
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">{name}</p>
                   </div>

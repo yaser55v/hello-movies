@@ -10,14 +10,14 @@ import {
   poster_url,
   logo_url,
 } from "../utils/fetchTmdb"
-import errImg from "../styles/avater.png"
-import errLogo from "../styles/errLogo.svg"
-import noPoster from "../styles/noposter.png"
+import errImg from "../styles/images/avater.png"
+import errLogo from "../styles/images/errLogo.svg"
+import noPoster from "../styles/images/noposter.png"
 import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Navigation } from "swiper/core"
+import SwiperCore, { Navigation, Autoplay } from "swiper/core"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-SwiperCore.use([Navigation])
+SwiperCore.use([Navigation, Autoplay])
 
 const TvPopularTemplate = ({ data }) => {
   const { tmdbId } = data.tmdbTvPopular
@@ -29,7 +29,6 @@ const TvPopularTemplate = ({ data }) => {
       try {
         const response = await fetch(url)
         const json = await response.json()
-        console.log(json)
         setDetails(json)
       } catch (error) {
         console.log("error", error)
@@ -252,6 +251,12 @@ const TvPopularTemplate = ({ data }) => {
             slidesPerView={2}
             navigation={true}
             spaceBetween={20}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            speed={1500}
             breakpoints={{
               640: {
                 slidesPerView: 2,

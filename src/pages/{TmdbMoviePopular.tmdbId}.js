@@ -10,13 +10,13 @@ import {
   poster_url,
   logo_url,
 } from "../utils/fetchTmdb"
-import errImg from "../styles/avater.png"
-import errLogo from "../styles/errLogo.svg"
+import errImg from "../styles/images/avater.png"
+import errLogo from "../styles/images/errLogo.svg"
 import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Navigation } from "swiper/core"
+import SwiperCore, { Navigation, Autoplay } from "swiper/core"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-SwiperCore.use([Navigation])
+SwiperCore.use([Navigation, Autoplay])
 
 const MoviePopularTemplate = ({ data }) => {
   const { tmdbId } = data.tmdbMoviePopular
@@ -28,8 +28,6 @@ const MoviePopularTemplate = ({ data }) => {
       try {
         const response = await fetch(url)
         const json = await response.json()
-
-        console.log(json)
         setDetails(json)
       } catch (error) {
         console.log("error", error)
@@ -53,10 +51,7 @@ const MoviePopularTemplate = ({ data }) => {
     credits: { cast = [] } = [],
     similar: { results = [] } = [],
   } = details
-  /*  console.log(videos)
-  console.log(release_dates) */
-  /*   const getCertification = results.slice(0, 1) */
-  console.log(results)
+
   return (
     <Layout>
       <Seo title={title} />
@@ -252,10 +247,6 @@ const MoviePopularTemplate = ({ data }) => {
                                   />
                                   {cat.name}
                                 </p>
-                                {/*  <span className="text-sm text-gray-300">
-                                  {" "}
-                                  As: {cat.character}
-                                </span> */}
                               </h3>
                             </div>
                           </div>
@@ -279,6 +270,12 @@ const MoviePopularTemplate = ({ data }) => {
             slidesPerView={2}
             navigation={true}
             spaceBetween={20}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            speed={1500}
             breakpoints={{
               640: {
                 slidesPerView: 2,

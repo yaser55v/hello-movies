@@ -3,14 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import SwiperCore, {
-  Navigation,
   Pagination,
   EffectFade,
   Parallax,
   Autoplay,
 } from "swiper/core"
 
-SwiperCore.use([Navigation, Pagination, EffectFade, Parallax, Autoplay])
+SwiperCore.use([Pagination, EffectFade, Parallax, Autoplay])
 const Home = () => {
   const data = useStaticQuery(query)
   const movies = data.allTmdbMoviePopular.nodes
@@ -31,7 +30,6 @@ const Home = () => {
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              navigation={true}
               speed={1200}
               parallax={true}
               effect={"fade"}

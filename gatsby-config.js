@@ -6,7 +6,8 @@ module.exports = {
   siteMetadata: {
     title: `Grand Show`,
     description: `Gatsby project with data from The Movie Database - https://www.themoviedb.org/`,
-    author: `Yasser Mahmoud`,
+    author: `@YasserM43067634`,
+    image: `/grandShow.png`,
     siteUrl: `https://www.themoviedb.org/`,
   },
   plugins: [

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 const TopMovies = () => {
   const data = useStaticQuery(query)
   const topMovies = data.allTmdbMovieTopRated.nodes
@@ -10,7 +10,6 @@ const TopMovies = () => {
           {topMovies.map(topm => {
             const {
               id,
-              tmdbId,
               title,
               vote_average,
               poster_path: { w780 },
@@ -27,10 +26,8 @@ const TopMovies = () => {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-200">
-                      <Link to={`/${tmdbId}`}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {title}
-                      </Link>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {title}
                     </h3>
                   </div>
                   <h3 className="text-sm text-gray-200 font-bold text-center">

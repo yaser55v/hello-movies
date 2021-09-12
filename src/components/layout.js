@@ -6,6 +6,7 @@ const Layout = ({ children }) => {
     <>
       <Navbar />
       <main className="bg-gray-900">{children}</main>
+      <hr className="border-t border-gray-600" />
       <Footer />
     </>
   )

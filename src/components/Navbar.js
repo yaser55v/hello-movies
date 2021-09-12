@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import tmdb from "../styles/images/tmdb.svg"
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -25,11 +25,16 @@ const Navbar = () => {
                   href="https://www.themoviedb.org/"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white rounded shadow-md "
                   aria-label="The Movie Database"
                   title="The Movie Database"
                 >
-                  Powered by The Movie Database
+                  Powered by{" "}
+                  <img
+                    src={tmdb}
+                    alt="The Movie Database"
+                    className="ml-2 w-40"
+                  />
                 </a>
               </li>
             </ul>
@@ -101,7 +106,12 @@ const Navbar = () => {
                             aria-label="The Movie Database"
                             title="The Movie Database"
                           >
-                            Powered by The Movie Database
+                            Powered by{" "}
+                            <img
+                              src={tmdb}
+                              alt="The Movie Database"
+                              className="ml-2 w-40"
+                            />
                           </a>
                         </li>
                       </ul>
