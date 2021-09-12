@@ -51,6 +51,10 @@ const TvPopularTemplate = ({ data }) => {
     vote_average,
   } = details
 
+  const [isReadMore, setIsReadMore] = useState(true)
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore)
+  }
   return (
     <Layout>
       <Seo title={name} />
@@ -66,13 +70,13 @@ const TvPopularTemplate = ({ data }) => {
           <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="flex flex-col items-center justify-between xl:flex-row">
               <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
-                <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+                <h2 className="max-w-lg mb-6 font-sans text-xl md:text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                   {name}
                 </h2>
                 <ul className="flex pb-3">
                   {genres.map(genre => (
                     <li
-                      className="mr-2 border border-green-400 text-lg bg-blue-900 text-green-400 px-2 rounded"
+                      className="mr-2 border border-green-400 text-sm md:text-lg bg-blue-900 text-green-400 px-2 rounded"
                       key={genre.id}
                     >
                       {genre.name}
@@ -91,7 +95,7 @@ const TvPopularTemplate = ({ data }) => {
                     className="w-16"
                     styles={{
                       path: {
-                        stroke: `rgba(0,255, 240,${vote_average / 10})`,
+                        stroke: `${vote_average > 5 ? "#ffea7c" : "#ff7c7c"}`,
                       },
                       trail: {
                         stroke: `rgba(0,255, 240, 0.2)`,
@@ -105,17 +109,28 @@ const TvPopularTemplate = ({ data }) => {
                       },
                     }}
                   />
-                  <p className="mx-2 border border-green-400 text-lg bg-blue-900 text-green-400 px-2 rounded uppercase">
+                  <p className="mx-2 border border-green-400 text-xs md:text-lg bg-blue-900 text-green-400 px-2 rounded uppercase">
                     {original_language}
                   </p>
 
-                  <p className="mx-2 border border-green-400 text-lg bg-blue-900 text-green-400 px-2 rounded">
+                  <p className="mx-2 border border-green-400 text-xs md:text-lg bg-blue-900 text-green-400 px-2 rounded">
                     {first_air_date}
                   </p>
                 </div>
-                <p className="max-w-xl mb-4 text-base text-gray-300 md:text-lg">
-                  {overview}
-                </p>
+                <div className="max-w-xl my-8">
+                  <p className="text-base text-gray-300 md:text-lg ">
+                    {overview && isReadMore
+                      ? overview && overview.slice(0, 100)
+                      : overview}
+                    <button
+                      onClick={toggleReadMore}
+                      onKeyDown={toggleReadMore}
+                      className="text-bold text-green-400 cursor-pointer"
+                    >
+                      {isReadMore ? "...Read more" : " Show less"}
+                    </button>
+                  </p>
+                </div>
                 <div className="flex justify-between items-center">
                   {videos.results && videos.results ? (
                     <React.Fragment>

@@ -16,6 +16,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@tailwindcss/line-clamp": "^0.2.1",
     "gatsby": "^3.13.0",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-create-client-paths": "^3.13.0",

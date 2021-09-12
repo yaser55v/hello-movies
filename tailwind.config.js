@@ -21,7 +21,12 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      lineClamp: ["hover"],
+    },
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/line-clamp"),
+  ],
 }
