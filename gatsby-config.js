@@ -8,7 +8,7 @@ module.exports = {
     description: `Gatsby project with data from The Movie Database - https://www.themoviedb.org/`,
     author: `@YasserM43067634`,
     image: `/grandShow.png`,
-    siteUrl: ``,
+    siteUrl: `https://grand-show.netlify.app`,
   },
   plugins: [
     "gatsby-plugin-postcss",
