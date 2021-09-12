@@ -173,7 +173,7 @@ const TvPopularTemplate = ({ data }) => {
                   ) : null}
                   {networks.slice(0, 1).map(pro => {
                     return (
-                      <div key={pro.id} className="mx-2 w-56">
+                      <div key={pro.id} className="mx-2 w-56 hidden md:flex">
                         <img
                           src={
                             pro.logo_path ? logo_url + pro.logo_path : errLogo
