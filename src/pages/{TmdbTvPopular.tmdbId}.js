@@ -95,7 +95,11 @@ const TvPopularTemplate = ({ data }) => {
                     className="w-16"
                     styles={{
                       path: {
-                        stroke: `${vote_average > 5 ? "#ffea7c" : "#ff7c7c"}`,
+                        stroke: `${
+                          vote_average > 5
+                            ? `rgba(0,255, 240, ${vote_average / 10})`
+                            : "#ff7c7c"
+                        }`,
                       },
                       trail: {
                         stroke: `rgba(0,255, 240, 0.2)`,

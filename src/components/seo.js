@@ -1,55 +1,38 @@
-import * as React from "react"
-
+import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
+export const query = graphql`
+  {
+    site {
+      siteMetadata {
+        siteTitle: title
+        siteDesc: description
+        titleTemplate
+        author
+        twitterUsername
+        image
+        siteUrl
       }
-    `
-  )
-
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
-
+    }
+  }
+`
+const Seo = ({ title, description, article }) => {
+  const { site } = useStaticQuery(query)
+  const { siteTitle, siteDesc, siteUrl, image, twitterUsername } =
+    site.siteMetadata
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <Helmet htmlAttributes={{ lang: "en" }} title={`${title} | ${siteTitle}`}>
+      <meta name="description" content={description || siteDesc} />
+      <meta name="image" content={image} />
+      {/* twitter card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={twitterUsername} />
+      <meta name="twitter:title" content={siteTitle} />
+      <meta name="twitter:description" content={siteDesc} />
+      <meta name="twitter:image" content={`${siteUrl}${image}`} />
+    </Helmet>
   )
-}
-
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 }
 
 export default Seo

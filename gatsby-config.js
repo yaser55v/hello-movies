@@ -5,8 +5,10 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Grand Show`,
-    description: `Gatsby project with data from The Movie Database - https://www.themoviedb.org/`,
-    author: `@YasserM43067634`,
+    description: `Gatsby & Tailwind project with data from TMDB - https://www.themoviedb.org/`,
+    titleTemplate: `%s | Grand Show`,
+    author: `Yasser Mahmoud`,
+    twitterUsername: `@YasserM43067634`,
     image: `/grandShow.png`,
     siteUrl: `https://grand-show.netlify.app`,
   },
