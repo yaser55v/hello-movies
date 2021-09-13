@@ -9,7 +9,7 @@ module.exports = {
     titleTemplate: `%s | Grand Show`,
     author: `Yasser Mahmoud`,
     twitterUsername: `@YasserM43067634`,
-    image: `/grandShow.png`,
+    image: `/grandShow1.png`,
     siteUrl: `https://grand-show.netlify.app`,
   },
   plugins: [
